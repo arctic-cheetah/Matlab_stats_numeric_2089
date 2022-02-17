@@ -1,14 +1,18 @@
 %Exercise 3
-
+%Use presdat.txt
 %%
 % a)
-AgeUS = [];
-arr_len = length(Name);
-for i = 1 : arr_len
-   if (strcmp(Country(i), "US") )
-       AgeUS(i) = Age(i);
-   end
-end
+% Worser version:
+% AgeUS = [];
+% j = 1;
+% arr_len = length(Name);
+% for i = 1 : arr_len
+%    if (strcmp(Country(i), "US") )
+%        AgeUS(j) = Age(i);
+%        j = j + 1;
+%    end
+% end
+AgeUS = Age(strcmp(Country, "US"))
 
 %%
 % b)
@@ -43,6 +47,63 @@ ylabel("Number of ages");
 % using n_bins
 
 %%
+% f)
+% AgeAU = [];
+% j = 1;
+% for i = 1 : arr_len
+%    if (strcmp(Country(i), "Aust") )
+%        AgeAU(j) = Age(i);
+%        j = j + 1;
+%    end
+%    
+% end
+AgeAU = Age(strcmp(Country, "Aust"));
+fprintf("Australian PM data (mean, variance, SD):")
+mean_AU = mean(AgeAU)
+var_AU = var(AgeAU)
+sd_AU = sqrt(var_AU)
+
+fprintf("US President data (mean, variance, SD):")
+mean_US = mean(AgeUS)
+var_US = var(AgeUS)
+sd_US = sqrt(var_US)
+
+%%
+% g)
+figure(4);
+boxplot(Age,Country);
+title("Boxplot of National Leader Age");
+ylabel("Age of Leader");
+xlabel("Nation");
+
+%%
+% h)
+fprintf("Australia: Five number summary:");
+AU_quantile = quantile(AgeAU, [0 : .25 : 1])
+
+fprintf("USA: Five number summary:");
+US_quantile = quantile(AgeUS, [0 : .25 : 1])
+
+%%
+% i)
+%Joe Biden
+
+%%
+% j)
+% The box plots display similar IQR's and their medians'
+% are close. Albeit, Australian PM's tend to be slightly 
+% younger because of the lower median.
+% Aside from the outlier from the US, there
+% does not appear to be a significant difference in age
+% for leaders to take office
+
+
+
+
+
+
+
+
 
 
 
